@@ -71,15 +71,12 @@ function loginHandle() {
 
 function handError(json){
     if (json.error){
-        let error = document.createElement('p')
-        error.textContent = json.error
-        error.setAttribute('color', 'red')
-        document.body.appendChild(error)
+        document.body.innerHTML += `<p style='color:red'>${json.error}</p>`
     }else{
         handleHome()
     }
 }
 
 function handleHome(){
-
+    
 }
