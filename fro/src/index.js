@@ -1,7 +1,5 @@
 let logged_in = false;
 
-console.log("testing this thing")
-
 document.addEventListener("DOMContentLoaded", event => {
     entrancePage()
 });
@@ -73,7 +71,15 @@ function loginHandle() {
 
 function handError(json){
     if (json.error){
-        console.log(json.error)
-        document.body.innerHTML += `<p style='color:red'>${json.error}</p>`
+        let error = document.createElement('p')
+        error.textContent = json.error
+        error.setAttribute('color', 'red')
+        document.body.appendChild(error)
+    }else{
+        handleHome()
     }
+}
+
+function handleHome(){
+
 }
