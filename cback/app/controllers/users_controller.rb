@@ -7,7 +7,7 @@ class UsersController < ApplicationController
             if user && user.authenticate(params[:password])
                 render json: {logged_in: true}            
             else
-                render json: {logged_in: false, error: "Can't seem to find this username or password, you probably misspelled it idiot."}
+                render json: {logged_in: false, error: "Can't seem to find this username or password, you probably misspelled it retard."}
             end
         end
         # if params[:username]
