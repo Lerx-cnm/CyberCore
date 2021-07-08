@@ -57,14 +57,13 @@ function signupHandle(){
     .then(json => {
         console.clear()
         console.log(json.resp))\n\n`
-    const text4 = "So I was pretty sparse on the new lines and stuff, so it'll be pretty frustrating, jsut a word of advice for the entier fetch call and '.thens', you want to do only a Shift+Enter or else you'll submit it halfway"
+    const text4 = "So I was pretty sparse on the instruction of when to put new lines and stuff, so it'll be pretty frustrating, but just a word of advice for the entire fetch call and '.thens', you want to do only a Shift+Enter or else you'll submit it halfway"
 
     console.log(text, text2)
     console.log(`%c${text3}`, 'color: green' )
     console.log(text4)
     
-    alert("you seriously thought it would be this easy?")
-    document.body.innerHTML = "<h2>Which button?</h2>"
+    document.body.innerHTML = "<h2>Pick a Button, try to choose the right one</h2>"
     let b1 = document.createElement('button')
     let b2 = document.createElement('button')
     let b3 = document.createElement('button')
@@ -81,7 +80,7 @@ function signupHandle(){
     document.body.appendChild(b4)
 
     b3.addEventListener('click', event =>{
-        alert("Bingoooo, good job. Open your Dev tools to the console, (you need chrome or brave to do this")
+        document.body.innerHTML = "<p>Bingoooo, good job. Open your Dev tools to the console, (you need chrome or brave to do this)</p>"
     })
 
     b1.addEventListener('click', event =>{
