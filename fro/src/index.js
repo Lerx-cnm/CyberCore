@@ -84,11 +84,17 @@ function handleHome(){
     headers: {'Content-Type': "application/json"},
     body: JSON.stringify({login_key: localStorage.access})}
     ).then(response => response.json())
-    .then(json => console.log(json))
-    homePage()
+    .then(json => {if(json.state == true){
+        localStorage.logged_in = true
+        homePage()
+    }else{
+        handleLogout()
+    }})
+
 }
 
 function homePage(){
+    handleHome()
     document.body.innerHTML = "<h1>Welcome home</h1>"
     let div1 = document.createElement('div')
     div1.className = "div1"
