@@ -46,22 +46,6 @@ function entrancePage() {
 
 function signupHandle(){
     console.clear()
-    const text = `Okay, so because Lowell made fun of me for making a signup page, I'm making you guys do this 'hard' way. But also, bro. This is CyberCore not CyberStupid so doing it this way should've been expected.\n\n`
-    const text2 = `So basically what you're gonna do is called a fetch call, with this you're gonna send your stuff directly to the freakin server. But also, with that make sure that you got your info correct cus theres no way to change it lol\n\n`
-    const text3 = `Okay, repeat after me(Shift+Enter for new line)(Also pull the console out so that you can see when to do new lines).\n\n
-    let obj = {password: '<your_password>', username: '<your_username>', email: '<your_email>'}\n(enter)\n
-    fetch('http://localhost:3000/users', {method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(obj)})
-    .then(response => response.json())
-    .then(json => {
-        console.clear()
-        console.log(json.resp))\n\n`
-    const text4 = "So I was pretty sparse on the instruction of when to put new lines and stuff, so it'll be pretty frustrating, but just a word of advice for the entire fetch call and '.thens', you want to do only a Shift+Enter or else you'll submit it halfway"
-
-    console.log(text, text2)
-    console.log(`%c${text3}`, 'color: green' )
-    console.log(text4)
     
     document.body.innerHTML = "<h2>Pick a Button, try to choose the right one</h2>"
     let b1 = document.createElement('button')
@@ -81,6 +65,22 @@ function signupHandle(){
 
     b3.addEventListener('click', event =>{
         document.body.innerHTML = "<p>Bingoooo, good job. Open your Dev tools to the console, (you need chrome or brave to do this)</p>"
+        const text = `Okay, so because Lowell made fun of me for making a signup page, I'm making you guys do this 'hard' way. But also, bro. This is CyberCore not CyberStupid so doing it this way should've been expected.\n\n`
+        const text2 = `So basically what you're gonna do is called a fetch call, with this you're gonna send your stuff directly to the freakin server. But also, with that make sure that you got your info correct cus theres no way to change it lol\n\n`
+        const text3 = `Okay, repeat after me(Shift+Enter for new line)(Also pull the console out so that you can see when to do new lines).\n\n
+        let obj = {password: '<your_password>', username: '<your_username>', email: '<your_email>'}\n(enter)\n
+        fetch('http://localhost:3000/users', {method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(obj)})
+        .then(response => response.json())
+        .then(json => {
+            console.clear()
+            console.log(json.resp))\n\n`
+        const text4 = "So I was pretty sparse on the instruction of when to put new lines and stuff, so it'll be pretty frustrating, but just a word of advice for the entire fetch call and '.thens', you want to do only a Shift+Enter or else you'll submit it halfway"
+    
+        console.log(text, text2)
+        console.log(`%c${text3}`, 'color: green' )
+        console.log(text4)
     })
 
     b1.addEventListener('click', event =>{
