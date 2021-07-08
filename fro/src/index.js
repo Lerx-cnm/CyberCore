@@ -99,8 +99,14 @@ function signupHandle(){
 }
 
 function loginHandle() {
+    let perror = document.getElementById('perror')
+    if (perror){
+    perror.remove()}
     let user = document.getElementById('user').value
     let pass = document.getElementById('password').value
+    if (user == "" || pass == ""){
+            handError("wrong")
+    }else{
     let obj = {username: user, password: pass}
     fetch('http://localhost:3000/users/', {method: 'POST',
         headers: {"Content-Type": "application/json"},
@@ -111,15 +117,25 @@ function loginHandle() {
         localStorage.access = json.key
         handError(json)
         }
-    )
+    )}
 }
 
 function handError(json){
-    if (json.error){
+    if (json == "wrong"){
+        if (document.getElementsByTagName('p').length < 1){
+        let err = document.createElement('p')
+        err.textContent = "You actually have to put in credentials, I'm not just gonna let you in."
+        err.style.color = "red"
+        err.id = "perror"
+        document.body.appendChild(err)
+        }
+    }
+    else if (json.error){
         if (document.getElementsByTagName('p').length < 1){
         let err = document.createElement('p')
         err.textContent = json.error
         err.style.color = "red"
+        err.id = "perror"
         document.body.appendChild(err)
         }
     }else{
