@@ -22,6 +22,17 @@ class UsersController < ApplicationController
             else 
                 render json: {state: false}
             end
+
+        elsif params[:email]
+            user = User.find_by(username: params[:username])
+            pass = params[:password].split()
+            if user
+                render json: {resp: "Bro, what are you, like stupid or something? We already have the username."}
+            elsif pass.length() < 8 || pass.any? { |c| (0..9).include?(c)}
+                render json: {resp: "Okay, I won't call you an idiot for this one, since I didn't tell you the password requirements, but it should be common sense."}
+            elsif user = User.create(params)
+                render json: {resp: "Ooh look at you go, you did it. yay....... what are you still here for? Refresh the page and login you bozo."}
+            end
         end
     end
 
