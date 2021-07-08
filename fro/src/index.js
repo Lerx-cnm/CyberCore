@@ -14,27 +14,6 @@ function dataThing(){
     console.log("testing data 1")
 }
 
-// const rmCheck = document.getElementById("rememberMe"),
-//     emailInput = document.getElementById("email");
-
-// if (localStorage.checkbox && localStorage.checkbox !== "") {
-//   rmCheck.setAttribute("checked", "checked");
-//   emailInput.value = localStorage.username;
-// } else {
-//   rmCheck.removeAttribute("checked");
-//   emailInput.value = "";
-// }
-
-// function lsRememberMe() {
-//   if (rmCheck.checked && emailInput.value !== "") {
-//     localStorage.username = emailInput.value;
-//     localStorage.checkbox = rmCheck.value;
-//   } else {
-//     localStorage.username = "";
-//     localStorage.checkbox = "";
-//   }
-// }
-
 function entrancePage() {
     let container = document.getElementById('c1')
     let username = document.createElement('input')
@@ -75,7 +54,9 @@ function signupHandle(){
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(obj)})
     .then(response => response.json())
-    .then(json => console.log(json.resp))\n\n`
+    .then(json => {
+        console.clear()
+        console.log(json.resp))\n\n`
     const text4 = "So I was pretty sparse on the new lines and stuff, so it'll be pretty frustrating, jsut a word of advice for the entier fetch call and '.thens', you want to do only a Shift+Enter or else you'll submit it halfway"
 
     console.log(text, text2)

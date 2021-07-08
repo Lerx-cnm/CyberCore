@@ -25,12 +25,16 @@ class UsersController < ApplicationController
 
         elsif params[:email]
             user = User.find_by(username: params[:username])
-            pass = params[:password].split()
+            pass = params[:password].split("")
+            # binding.pry
             if user
                 render json: {resp: "Bro, what are you, like stupid or something? We already have the username."}
-            elsif pass.length() < 8 || pass.any? { |c| (0..9).include?(c)}
+            elsif !(pass.length() > 7) || !(pass.any? { |c| ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].include?(c)})
                 render json: {resp: "Okay, I won't call you an idiot for this one, since I didn't tell you the password requirements, but it should be common sense."}
-            elsif user = User.create(params)
+            elsif (params[:email] || params[:username] || params[:password]) == ""
+                render json: {resp: "Bro.. seriously? It's not that hard to put info in."}
+            elsif user = User.create(password: params[:password], username: params[:username], email: params[:email])
+                # binding.pry
                 render json: {resp: "Ooh look at you go, you did it. yay....... what are you still here for? Refresh the page and login you bozo."}
             end
         end
