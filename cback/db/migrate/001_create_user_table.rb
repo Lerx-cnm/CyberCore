@@ -4,6 +4,7 @@ class CreateUserTable < ActiveRecord::Migration[6.0]
             t.string :username
             t.string :email
             t.string :password_digest
+            t.string :acc_ass
 
             t.timestamps
         end

@@ -1,8 +1,15 @@
-let logged_in = false;
 
 document.addEventListener("DOMContentLoaded", event => {
+    if(localStorage.logged_in == 'true'){
+        homePage()
+    }else{
     entrancePage()
+    }
 });
+
+function dataThing(){
+    console.log("testing data 1")
+}
 
 // const rmCheck = document.getElementById("rememberMe"),
 //     emailInput = document.getElementById("email");
@@ -29,13 +36,8 @@ function entrancePage() {
     let username = document.createElement('input')
     let password = document.createElement('input')
     let loginb = document.createElement('button')
-    let check = document.createElement('input')
     let label = document.createElement('label')
 
-    label.textContent = 'Remember me'
-    label.htmlFor = 'check'
-    check.type = 'checkbox'
-    check.id = 'check'
     container.innerHTML += '<h1>CyberCore</h1>'
     username.placeholder = 'username'
     username.id = 'user'
@@ -47,7 +49,6 @@ function entrancePage() {
     container.appendChild(username)
     container.appendChild(password)
     container.appendChild(loginb)
-    container.appendChild(check)
 
     loginb.addEventListener('click', event =>{
         loginHandle()
@@ -64,6 +65,7 @@ function loginHandle() {
     })
     .then(response => response.json())
     .then(json =>{
+        localStorage.access = json.key
         handError(json)
         }
     )
@@ -78,5 +80,32 @@ function handError(json){
 }
 
 function handleHome(){
-    
+    fetch('http://localhost:3000/users', {method: 'POST',
+    headers: {'Content-Type': "application/json"},
+    body: JSON.stringify({login_key: localStorage.access})}
+    ).then(response => response.json())
+    .then(json => console.log(json))
+    homePage()
+}
+
+function homePage(){
+    document.body.innerHTML = "<h1>Welcome home</h1>"
+    let div1 = document.createElement('div')
+    div1.className = "div1"
+    let logout = document.createElement('button')
+    logout.textContent = "logout"
+    document.body.append(div1)
+    div1.appendChild(logout)
+
+    logout.addEventListener('click', event =>{
+        handleLogout()
+    })
+
+}
+
+function handleLogout(){
+    localStorage.logged_in = false;
+    localStorage.access = ""
+    location.reload()
+    // alert("you're logged out")
 }
