@@ -116,7 +116,12 @@ function loginHandle() {
 
 function handError(json){
     if (json.error){
-        document.body.innerHTML += `<p style='color:red'>${json.error}</p>`
+        if (document.getElementsByTagName('p').length < 1){
+        let err = document.createElement('p')
+        err.textContent = json.error
+        err.style.color = "red"
+        document.body.appendChild(err)
+        }
     }else{
         handleHome()
     }
