@@ -84,7 +84,7 @@ function signupHandle(){
     })
 
     b1.addEventListener('click', event =>{
-        alert('well, look at you. You picked the wrong one. Sucker. ')
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank').focus();
     })
 
     b2.addEventListener('click', event =>{
@@ -92,7 +92,7 @@ function signupHandle(){
     })
 
     b4.addEventListener('click', event => {
-        document.body.innerHTML = "<img class = gif src= src/best.gif>"
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank').focus();
     })
 
 
