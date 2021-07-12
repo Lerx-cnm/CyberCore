@@ -173,6 +173,34 @@ function homePage(){
         handleLogout()
     })
 
+    homeElements()
+
+}
+
+function homeElements(){
+    let pro = document.createElement('button')
+    let dm = document.createElement('button')
+    let apps = document.createElement('button')
+
+    pro.textContent = "profile"
+    dm.textContent = "messages"
+    apps.textContent = "Apps"
+
+    document.body.appendChild(pro)
+    document.body.appendChild(dm)
+    document.body.appendChild(apps)
+
+    pro.addEventListener("click", event =>{
+        handlePro()
+    })
+
+    dm.addEventListener('click', event =>{
+        handleDM()
+    })
+
+    apps.addEventListener('click', event => {
+        handleApps()
+    })
 }
 
 function handleLogout(){
@@ -180,4 +208,40 @@ function handleLogout(){
     localStorage.access = ""
     location.reload()
     // alert("you're logged out")
+}
+
+function handleDM(){
+    alert('clicked messages')
+}
+
+function handlePro(){
+    alert('clicked profile')
+}
+
+function handleApps(){
+    document.body.innerHTML = "<h1>App</h1>"
+    let physique = document.createElement('button')
+    let wtracker = document.createElement('button')
+
+    physique.textContent = "Public workout, weight and BMI tracker"
+    wtracker.textContent = "Personal weight, food/calorie and water tracker"
+
+    document.body.appendChild(physique)
+    document.body.appendChild(wtracker)
+
+    physique.addEventListener('click', event =>{
+        appPhy()
+    })
+
+    wtracker.addEventListener('click', event =>{
+        appWt()
+    })
+}
+
+function appPhy(){
+
+}
+
+function appWt(){
+    
 }
